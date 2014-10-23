@@ -1,0 +1,45 @@
+<body>
+  {{> navigation}}
+  {{#if currentUser}}
+    {{> main}}
+
+  {{else}}
+    <div class="container" >
+      <p> please signin/create account to continue</p>
+    </div>
+  {{/if}}
+
+</body>
+
+<template name="main">
+  <div id="content" class="container" >
+    <div class="span6 offset3">
+
+      <fieldset>
+        <legend>Simple Todo App</legend>
+        <input type="text" id="input-todo" placeholder="What needs to be done?…">
+        <input type="button" value="Add" class="btn btn-primary" id="add-todo" />
+        <ul class="todo-list">
+          {{#each todosList}}
+            <li class="todo">
+              <input type="checkbox" class="todo-done" {{checkedState}}/>  
+              {{title}}
+              <input type="button" value="Delete" class="btn btn-mini delete-todo" />
+            </li>
+          {{/each}}
+        </ul>
+      </fieldset>
+    </div>
+  </div>
+</template>
+
+<template name="navigation">
+  <div class="navbar">
+    <div class="navbar-inner">
+
+      <ul class="nav pull-right">
+        <li class="pull-right">{{> loginButtons align="right"}}</li>
+      </ul>
+    </div>
+  </div>
+</template>
